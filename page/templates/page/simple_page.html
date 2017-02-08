@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+
+<h3> {{ page.title }} </h3>
+
+
+<div>
+    {% image page.header_image original %}
+</div>
+
+<article>
+{% include_block page.body %}
+</article>
+{% endblock content %}
