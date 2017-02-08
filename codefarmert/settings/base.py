@@ -14,6 +14,8 @@ from __future__ import absolute_import, unicode_literals
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from decouple import Config
+import dj_database_url
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -94,12 +96,8 @@ WSGI_APPLICATION = 'codefarmert.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
