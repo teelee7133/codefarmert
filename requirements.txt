@@ -5,3 +5,4 @@ python-decouple>=3.0
 dj-database-url>=0.4.2
 django-storages>=1.5.2
 boto3>=1.4.4
+gunicorn>=19.6.0
