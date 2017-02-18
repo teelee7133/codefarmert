@@ -1,0 +1,96 @@
+
+body {
+    box-sizing: content-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-block__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-block__item{
+    height: 100px;
+}
+
+
+.grid-block__item a,
+.grid-block__item a:hover,
+.grid-block__item a:visited{
+    text-decoration: none;
+}
+
+.grid-block__item .grid-block__item--hover{
+    display: none;    
+}
+
+.grid-block__item:hover .grid-block__item--hover{
+    height: 100%;
+    display: block;
+}
+
+.grid-block__item .grid-block__item--default{
+    height: 100%;
+    display: block;
+}
+
+.grid-block__item:hover .grid-block__item--default{
+    display: none;
+}
+
+.grid-block__item__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.red {
+    color: red;
+}
+.yellow {
+    color: yellow;
+}
+.white{
+    color: white;
+}
+.blue{
+    color: blue;
+}
+
+@mixin col-spec($screen_var, $max_value) {
+  .col-#{$screen_var}-#{$max_value}{
+    @for $i from 1 through $max_value {
+      &-#{$i}{ width: 100.0% * $i / $max_value ; }
+    }
+   }
+  .offset-#{$screen_var}-#{$max_value}{
+    @for $i from 1 through $max_value {
+      &-#{$i}{ margin-left: 100.0% * $i / $max_value; }
+    }
+  }
+}
+
+@media screen {
+  @include col-spec(xs, 8)
+}
+
+@media screen and (min-width: 576px) {
+  @include col-spec(sm, 8)
+}
+
+@media screen and (min-width: 768px) {
+  @include col-spec(md, 8)
+}
+
+@media screen and (min-width: 992px) {
+  @include col-spec(lg, 8)
+}
+
+@media screen and (min-width: 1200px) {
+  @include col-spec(xl, 8)
+}
+
+

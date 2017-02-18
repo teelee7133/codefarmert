@@ -12,8 +12,11 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        {% block head_extra_meta %}
+        {% endblock head_extra_meta %}
+
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/codefarmert.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'codefarmert/css/codefarmert.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -26,7 +29,7 @@
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/codefarmert.js' %}"></script>
+        <script type="text/javascript" src="{% static 'codefarmert/js/codefarmert.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

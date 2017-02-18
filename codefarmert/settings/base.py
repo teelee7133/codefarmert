@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for codefarmert project.
 
@@ -14,7 +15,7 @@ from __future__ import absolute_import, unicode_literals
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from decouple import Config
+from decouple import config
 import dj_database_url
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -125,11 +126,13 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, 'static'))
+STATIC_URL = config('STATIC_URL', default='/static/')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = config('MEDIA_ROOT', os.path.join(BASE_DIR, 'web/media'))
+MEDIA_URL = config('MEDIA_URL', '/media/')
+
+
 
 
 # Wagtail settings

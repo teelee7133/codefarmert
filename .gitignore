@@ -1,5 +1,10 @@
-*.sqlite3
-media/
 *.pyc
+*.sqlite3
+*.env
+codefarmert/settings/local.py
 
+web/media/*
+web/build/*
+node_modules/*
 
+.idea/*
