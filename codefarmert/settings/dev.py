@@ -20,16 +20,13 @@ if DEBUG:
     from django.views import static
 
     WEB_BUILD_ROOT = config('WEB_BUILD_ROOT', 'web/build/')
-    WEB_DIST_ROOT = config('WEB_DIST_ROOT', '/static/codefarmert')
+    WEB_DIST_ROOT = config('WEB_DIST_ROOT', 'codefarmert')
 
     _old_staticfiles_serve = staticfiles_views.serve
 
     def dev_staticfiles_serve_wrapper(fn):
         def inner(request, path, **kwargs):
-
             if DEBUG:
-                path = request.path
-
                 if path.startswith(WEB_DIST_ROOT):
                     path = path[len(WEB_DIST_ROOT):].lstrip('/')
                     return static.serve(request, path, document_root=WEB_BUILD_ROOT, )

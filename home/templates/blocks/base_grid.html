@@ -1,0 +1,22 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% image value.background_image original as bg_image %}
+<div class="grid-block__item  mq-col-xs-24-24 mq-col-md-24-8 "  >
+    <article class="item__content">
+
+        <div class="grid-block__item__image">
+            <figure >
+                <a href="{% block grid_url %}  {% endblock %}" >
+                <img src="{{ bg_image.url }}" >
+                </a>
+            </figure>
+        </div>
+
+        <div class="grid-block__item__content" >
+            <div><h3 class="red">{{ value.page.title }}</h3></div>
+            <div >{{ value.description }}</div>
+        </div>
+    </article>
+    <div style="height:10px"></div>
+</div>

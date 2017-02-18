@@ -10,8 +10,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 
 var paths = {
-
+  scss_entries: ['codefarmert/web_src/scss/*.scss'],
   scss: ['codefarmert/web_src/scss/**/*.scss'],
+  js: ['codefarmert/web_src/js/**/*.js', 'codefarmert/web_src/js/**/*.jsx'],
   js_entries: ['codefarmert.js'],
   js_entries_dir: 'codefarmert/web_src/js/',
   build_dir: 'web/build/',
@@ -20,7 +21,7 @@ var paths = {
 
 
 gulp.task('css', function () {
-  return gulp.src(paths.scss)
+  return gulp.src(paths.scss_entries)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.build_dir + '/css/'));
 });
@@ -47,11 +48,16 @@ _.map(paths.js_entries, function (js_entry){
 })
 
 
-gulp.task('javascript', paths.js_entries)
+gulp.task('js', paths.js_entries)
 
-gulp.task('build', ['css', 'javascript']);
+gulp.task('build', ['css', 'js']);
 
 gulp.task('makedist', function(){
   return gulp.src(paths.build_dir + '**/*')
     .pipe(gulp.dest(paths.dist_dir));
 })
+
+gulp.task('watch', function() {
+  gulp.watch(paths.scss, ['css']);
+  gulp.watch(paths.js, ['js']);
+});

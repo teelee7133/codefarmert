@@ -23,11 +23,20 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="site {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+        {% block main %}
 
-        {% block content %}{% endblock %}
+        <header>{% block header %}{% include '_include/header.html' %} {% endblock %} </header>
 
+        <section class="site_core_section">
+            <div class="mq-col-xs-24-20 mq-offset-xs-24-2 mq-col-md-24-18 mq-offset-md-24-3 ">
+            {% block content %}{% endblock %}
+            </div>
+        </section>
+
+        <footer>{% block footer %}{% include '_include/footer.html' %}{% endblock %}</footer>
+        {% endblock %}
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'codefarmert/js/codefarmert.js' %}"></script>
 

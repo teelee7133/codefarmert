@@ -23,21 +23,41 @@ class HomePage(Page):
 
 
 
-class PageGridBlock(blocks.StructBlock):
+class BaseGridBlock(blocks.StructBlock):
 
     heading = blocks.CharBlock(),
     description = blocks.RichTextBlock()
     background_image = ImageChooserBlock()
+
+    class Meta:
+        template = 'blocks/base_grid.html'
+
+
+class PageGridBlock(BaseGridBlock):
+
+
     page = blocks.PageChooserBlock()
 
     class Meta:
         template = 'blocks/page_grid.html'
 
 
+class URLGridBlock(BaseGridBlock):
+
+    heading = blocks.CharBlock(),
+    description = blocks.RichTextBlock()
+    background_image = ImageChooserBlock()
+    url = blocks.URLBlock()
+
+    class Meta:
+        template = 'blocks/url_grid.html'
+
+
 class GridHomePage(Page):
 
     body = StreamField([
-        ('page', PageGridBlock())
+        ('page', PageGridBlock()),
+        ('url', URLGridBlock()),
     ])
 
     content_panels = Page.content_panels + [

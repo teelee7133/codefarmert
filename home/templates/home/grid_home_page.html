@@ -3,8 +3,6 @@
 {% block content %}
 {% load wagtailcore_tags %}
 
-{{ page.title }}
-
 <section class="grid-block__container">
     {% for block in page.body %}
          {% include_block block %}

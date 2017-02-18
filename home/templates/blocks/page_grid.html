@@ -1,22 +1,6 @@
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% extends "blocks/base_grid.html" %}
 
-{% image value.background_image original as bg_image %}
 
-<article class="grid-block__item  col-sm-8-2 "  style="background-image: url('{{ bg_image.url }}')"> 
-    <a href="{{ value.page.url_path }}" >
-       <div class="grid-block__item--hover">
-            <div class="grid-block__item__content" >
-                <div><h3 class="yellow">{{ value.page.title }}</h3></div>
-                <div class="white">{{ value.description }}</div>
-            </div> 
-       </div>
-    </a>
-    <div class="grid-block__item--default">
-        <div class="grid-block__item__content" >
-            <div><h3 class="white">{{ value.page.title }}</h3></div>
-        </div>
-    </div>
-</article>
+{% block grid_url %} {{ value.page.url }} {% endblock %}
 
 
