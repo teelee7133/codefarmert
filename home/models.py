@@ -25,7 +25,7 @@ class HomePage(Page):
 
 class BaseGridBlock(blocks.StructBlock):
 
-    heading = blocks.CharBlock(),
+    heading = blocks.CharBlock()
     description = blocks.RichTextBlock()
     background_image = ImageChooserBlock()
 
@@ -35,7 +35,6 @@ class BaseGridBlock(blocks.StructBlock):
 
 class PageGridBlock(BaseGridBlock):
 
-
     page = blocks.PageChooserBlock()
 
     class Meta:
@@ -44,9 +43,6 @@ class PageGridBlock(BaseGridBlock):
 
 class URLGridBlock(BaseGridBlock):
 
-    heading = blocks.CharBlock(),
-    description = blocks.RichTextBlock()
-    background_image = ImageChooserBlock()
     url = blocks.URLBlock()
 
     class Meta:
@@ -55,11 +51,23 @@ class URLGridBlock(BaseGridBlock):
 
 class GridHomePage(Page):
 
+    summary = RichTextField(blank=True)
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     body = StreamField([
         ('page', PageGridBlock()),
         ('url', URLGridBlock()),
     ])
 
+
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body')
+        ImageChooserPanel('background_image'),
+        FieldPanel('summary'),
+        StreamFieldPanel('body'),
     ]

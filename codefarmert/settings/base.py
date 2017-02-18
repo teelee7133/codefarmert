@@ -15,8 +15,10 @@ from __future__ import absolute_import, unicode_literals
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from decouple import config
 import dj_database_url
+from decouple import config
+
+
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -133,6 +135,25 @@ MEDIA_ROOT = config('MEDIA_ROOT', os.path.join(BASE_DIR, 'web/media'))
 MEDIA_URL = config('MEDIA_URL', '/media/')
 
 
+
+
+
+AWS_S3_ACCESS_KEY_ID = config('AWS_S3_ACCESS_KEY_ID', default='')
+AWS_S3_SECRET_ACCESS_KEY = config('AWS_S3_SECRET_ACCESS_KEY', default='')
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME", 'codefarmert-media')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'eu-west-2')
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=31536000, public',
+}
+AWS_S3_SECURE_URLS = True       # use http instead of https
+AWS_QUERYSTRING_AUTH = False    # don't add complex authentication-related querying
+
+# addressing_style: auto
+# signature_version: 's3v4'
+# AWS_S3_SECURE_URLS = True       # use http instead of https
+
+if AWS_S3_ACCESS_KEY_ID and AWS_S3_SECRET_ACCESS_KEY and AWS_S3_REGION_NAME:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Wagtail settings

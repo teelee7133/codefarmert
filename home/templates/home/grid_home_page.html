@@ -1,11 +1,17 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block content %}
-{% load wagtailcore_tags %}
+    {% image page.background_image format-jpeg jpegquality-40 as bg_image %}
+    <aside class="grid-home__summary" style="background-image: url({{bg_image.url}})">
+        {{ page.summary|richtext }}
+    </aside>
+    <section class="grid-block__container">
 
-<section class="grid-block__container">
-    {% for block in page.body %}
-         {% include_block block %}
-    {% endfor %}
-</section>
+
+        {% for block in page.body %}
+             {% include_block block %}
+        {% endfor %}
+    </section>
 {% endblock content %}

@@ -3,3 +3,5 @@ wagtail>=1.8,<1.9
 django_extensions>=1.7.5
 python-decouple>=3.0
 dj-database-url>=0.4.2
+django-storages>=1.5.2
+boto3>=1.4.4

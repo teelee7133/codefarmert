@@ -10,6 +10,7 @@ body.site {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     background-color: $color-primary-0;
+    color: $color-primary-4;
 }
 
 * {
@@ -25,15 +26,16 @@ body.site img{
 }
 
 body.site > header{
-    background-color: $color-primary-3;
-    text-align: center;
+    background-color: $color-primary-4;
+    text-align: left;
 
     h1 {
-      padding-top: 1em;
-      padding-bottom: 1em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 1em;
       font-family: 'Barrio', cursive;
-      font-size: 3em;
-      color: $color-primary-4;
+      font-size: 1.5em;
+      color: $color-primary-3;
     }
 
 }
@@ -57,7 +59,12 @@ body > section.site_core_section  {
 
 }
 
-
+.grid-home__summary{
+    text-align: center;
+    font-size: 2em;
+    padding: 2em 1.5em 2em 1.5em;
+    color: $color-primary-0;
+}
 
 .grid-block__container{
     display: flex;

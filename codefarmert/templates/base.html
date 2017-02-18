@@ -12,12 +12,13 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
         {% block head_extra_meta %}
         {% endblock head_extra_meta %}
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'codefarmert/css/codefarmert.css' %}">
-
+        <link rel="icon" href="/favicon.ico">
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}

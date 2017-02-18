@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-{% image value.background_image original as bg_image %}
-<div class="grid-block__item  mq-col-xs-24-24 mq-col-md-24-8 "  >
+{% image value.background_image fill-500x300 format-jpeg jpegquality-40 as bg_image %}
+<div class="grid-block__item  mq-col-xs-24-20 mq-col-md-24-10 "  >
     <article class="item__content">
 
         <div class="grid-block__item__image">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="grid-block__item__content" >
-            <div><h3 class="red">{{ value.page.title }}</h3></div>
+            <div><h3>{% block title %}  {% endblock %}{{ value.page.title }}</h3></div>
             <div >{{ value.description }}</div>
         </div>
     </article>
