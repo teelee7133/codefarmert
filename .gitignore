@@ -5,6 +5,7 @@ codefarmert/settings/local.py
 
 web/media/*
 web/build/*
+static/*
 node_modules/*
 
 .idea/*
