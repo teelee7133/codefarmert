@@ -16,7 +16,7 @@ from __future__ import absolute_import, unicode_literals
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
-from decouple import config
+from decouple import config, Csv
 
 
 
@@ -135,7 +135,7 @@ MEDIA_ROOT = config('MEDIA_ROOT', os.path.join(BASE_DIR, 'web/media'))
 MEDIA_URL = config('MEDIA_URL', '/media/')
 
 
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='')
 
 
 AWS_S3_ACCESS_KEY_ID = config('AWS_S3_ACCESS_KEY_ID', default='')
