@@ -7,3 +7,4 @@ django-storages>=1.5.2
 boto3>=1.4.4
 gunicorn>=19.6.0
 psycopg2>=2.6.2
+whitenoise==3.3.0

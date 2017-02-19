@@ -68,6 +68,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
@@ -137,6 +138,9 @@ MEDIA_URL = config('MEDIA_URL', '/media/')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='')
 SECRET_KEY = config('SECRET_KEY', default='')
+
+# TODO: This is not working... investigate later
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 AWS_S3_ACCESS_KEY_ID = config('AWS_S3_ACCESS_KEY_ID', default='')
 AWS_S3_SECRET_ACCESS_KEY = config('AWS_S3_SECRET_ACCESS_KEY', default='')
