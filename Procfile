@@ -1,1 +1,1 @@
-web: gunicorn codefarmert.wsgi --log-file -
+web: gunicorn codefarmert.wsgi
