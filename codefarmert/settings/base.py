@@ -136,7 +136,7 @@ MEDIA_URL = config('MEDIA_URL', '/media/')
 
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='')
-
+SECRET_KEY = config('SECRET_KEY', default='')
 
 AWS_S3_ACCESS_KEY_ID = config('AWS_S3_ACCESS_KEY_ID', default='')
 AWS_S3_SECRET_ACCESS_KEY = config('AWS_S3_SECRET_ACCESS_KEY', default='')
