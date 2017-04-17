@@ -31,7 +31,9 @@
         <header>{% block header %}{% include '_include/header.html' %} {% endblock %} </header>
 
         <section class="site_core_section">
-            <div class="mq-col-xs-24-20 mq-offset-xs-24-2 mq-col-md-24-18 mq-offset-md-24-3 ">
+            {% block heading %}{% endblock %}
+
+            <div class="mq-col-xs-24-24 mq-offset-xs-24-0 mq-col-md-24-22 mq-offset-md-24-1 ">
             {% block content %}{% endblock %}
             </div>
         </section>

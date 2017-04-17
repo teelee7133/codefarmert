@@ -1,7 +1,12 @@
 
 @import 'import/palette.scss';
 
-$site-bg-color: $color-primary-2;
+
+$color-black: #000000;
+$color-light-grey: #dddddd;
+$color-v-light-grey: #eeeeee;
+$color-v-v-light-grey: #fefefe;
+
 
 $direction-list: left, right, top, bottom;
 
@@ -9,7 +14,7 @@ body.site {
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: $color-primary-0;
+    background-color: $color-black;
     color: $color-primary-4;
 }
 
@@ -26,7 +31,7 @@ body.site img{
 }
 
 body.site > header{
-    background-color: $color-primary-4;
+    background-color: $color-black;
     text-align: left;
 
     h1 {
@@ -40,13 +45,12 @@ body.site > header{
 
 }
 
-body > footer{
-    background-color: $color-primary-3
+body.site > footer{
+    background-color: $color-black;
 }
 
 body > section.site_core_section  {
-    background-color: $color-primary-0;
-    background-image: url('../../img/background.svg');
+    background-color: $color-v-light-grey;
 
     > div {
         background-color: $color-primary-2;
@@ -55,8 +59,6 @@ body > section.site_core_section  {
 
 .item__content {
     background-color: $color-primary-1;
-
-
 }
 
 .grid-home__summary{
@@ -67,6 +69,7 @@ body > section.site_core_section  {
 }
 
 .grid-block__container{
+    background-color: $color-v-v-light-grey;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,6 +82,11 @@ body > section.site_core_section  {
 .grid-block__item{
    margin-top: 10px;
    margin-bottom: 10px;
+   border-radius: 2px;
+   border-width: 1px;
+   border-color: $color-light-grey;
+   border-style: solid;
+
 }
 .grid-block__item::after{
 
@@ -126,22 +134,22 @@ body > section.site_core_section  {
 
 
 
-.red {
+.color-red {
     color: red;
 }
-.yellow {
+.color-yellow {
     color: yellow;
 }
-.white{
+.color-white{
     color: white;
 }
-.blue{
+.color-blue{
     color: blue;
 }
 
 @mixin col-spec($screen_var, $max_value) {
   .mq-col-#{$screen_var}-#{$max_value}{
-    @for $i from 1 through $max_value {
+    @for $i from 0 through $max_value {
       &-#{$i}{ width: 100.0% * $i / $max_value ; }
     }
    }

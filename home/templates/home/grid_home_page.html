@@ -2,14 +2,15 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
+{% block heading %}
+{% image page.background_image format-jpeg jpegquality-40 as bg_image %}
+ <div class="grid-home__summary" style="background-image: url({{bg_image.url}})">
+     {{ page.summary|richtext }}
+ </div>
+{% endblock %}
+
 {% block content %}
-    {% image page.background_image format-jpeg jpegquality-40 as bg_image %}
-    <aside class="grid-home__summary" style="background-image: url({{bg_image.url}})">
-        {{ page.summary|richtext }}
-    </aside>
     <section class="grid-block__container">
-
-
         {% for block in page.body %}
              {% include_block block %}
         {% endfor %}
