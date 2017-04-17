@@ -15,6 +15,7 @@ from __future__ import absolute_import, unicode_literals
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import uuid
 import dj_database_url
 from decouple import config, Csv
 
@@ -137,7 +138,7 @@ MEDIA_URL = config('MEDIA_URL', '/media/')
 
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='')
-SECRET_KEY = config('SECRET_KEY', default='')
+SECRET_KEY = config('SECRET_KEY', default=uuid.uuid4().hex)
 
 # TODO: This is not working... investigate later
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
