@@ -52,9 +52,10 @@ body.site > footer{
 body > section.site_core_section  {
     background-color: $color-v-light-grey;
 
-    > div {
+}
+
+body > .site_content {
         background-color: $color-primary-2;
-    }
 }
 
 .item__content {
@@ -66,6 +67,8 @@ body > section.site_core_section  {
     font-size: 2em;
     padding: 2em 1.5em 2em 1.5em;
     color: $color-primary-0;
+    background-color: $color-black;
+    min-height: 50px;
 }
 
 .grid-block__container{
