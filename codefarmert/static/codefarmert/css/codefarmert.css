@@ -35,8 +35,9 @@ body.site > footer {
 
 body > section.site_core_section {
   background-color: #eeeeee; }
-  body > section.site_core_section > div {
-    background-color: #EDE6F1; }
+
+body > .site_content {
+  background-color: #EDE6F1; }
 
 .item__content {
   background-color: #FCFBFC; }
@@ -45,7 +46,9 @@ body > section.site_core_section {
   text-align: center;
   font-size: 2em;
   padding: 2em 1.5em 2em 1.5em;
-  color: #CDB8DC; }
+  color: #CDB8DC;
+  background-color: #000000;
+  min-height: 50px; }
 
 .grid-block__container {
   background-color: #fefefe;
