@@ -1,4 +1,4 @@
-from seolondon.settings import *
+from codefarmert.settings import *
 
 
 import django
