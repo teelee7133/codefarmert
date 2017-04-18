@@ -1,8 +1,13 @@
-from codefarmert.settings import *
-
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
 
 import django
 
+from codefarmert.settings.base import *
+
+
+if not SECRET_KEY:
+    SECRET_KEY = '#*mi=ldm3yx(@nv58(70sra^2anku3+71f%$t^l0#czxxkt4jn'
 
 # Borrowed from pytest-django etc, allow no migration to speed up test
 class DisableMigrations(object):
