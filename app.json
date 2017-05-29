@@ -1,7 +1,7 @@
 {
   "name": "codefarmert",
   "scripts": {
-      "postdeploy": "pg_dump $STAGING_DATABASE_URL | psql $DATABASE_URL && python manage.py migrate"
+      "postdeploy": "([ $STAGING_DATABASE_URL ] && (pg_dump $STAGING_DATABASE_URL | psql $DATABASE_URL)) && python manage.py migrate"
   },
   "env": {
     "STAGING_DATABASE_URL": {
