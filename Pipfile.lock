@@ -1,0 +1,130 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "dc761470600e0394227eada0cd95c11ee510b0fba4188cf2a75a1bbde5905a5b"
+        },
+        "requires": {
+            "python_version": "3.5"
+        },
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "Django": {
+            "version": "==1.11.1"
+        },
+        "Pillow": {
+            "version": "==4.1.1"
+        },
+        "Unidecode": {
+            "version": "==0.04.20"
+        },
+        "Willow": {
+            "version": "==0.4"
+        },
+        "appdirs": {
+            "version": "==1.4.3"
+        },
+        "beautifulsoup4": {
+            "version": "==4.6.0"
+        },
+        "boto3": {
+            "version": "==1.4.4"
+        },
+        "botocore": {
+            "version": "==1.5.56"
+        },
+        "certifi": {
+            "version": "==2017.4.17"
+        },
+        "chardet": {
+            "version": "==3.0.3"
+        },
+        "dj-database-url": {
+            "version": "==0.4.2"
+        },
+        "django-extensions": {
+            "version": "==1.7.9"
+        },
+        "django-modelcluster": {
+            "version": "==3.1"
+        },
+        "django-storages": {
+            "version": "==1.5.2"
+        },
+        "django-taggit": {
+            "version": "==0.22.1"
+        },
+        "django-treebeard": {
+            "version": "==4.1.1"
+        },
+        "djangorestframework": {
+            "version": "==3.6.3"
+        },
+        "docutils": {
+            "version": "==0.13.1"
+        },
+        "gunicorn": {
+            "version": "==19.7.1"
+        },
+        "html5lib": {
+            "version": "==0.999999999"
+        },
+        "idna": {
+            "version": "==2.5"
+        },
+        "jmespath": {
+            "version": "==0.9.3"
+        },
+        "olefile": {
+            "version": "==0.44"
+        },
+        "packaging": {
+            "version": "==16.8"
+        },
+        "psycopg2": {
+            "version": "==2.7.1"
+        },
+        "pyparsing": {
+            "version": "==2.2.0"
+        },
+        "python-dateutil": {
+            "version": "==2.6.0"
+        },
+        "python-decouple": {
+            "version": "==3.0"
+        },
+        "pytz": {
+            "version": "==2017.2"
+        },
+        "requests": {
+            "version": "==2.16.5"
+        },
+        "s3transfer": {
+            "version": "==0.1.10"
+        },
+        "setuptools": {
+            "version": "==35.0.2"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "urllib3": {
+            "version": "==1.21.1"
+        },
+        "wagtail": {
+            "version": "==1.10.1"
+        },
+        "webencodings": {
+            "version": "==0.5.1"
+        },
+        "whitenoise": {
+            "version": "==3.3.0"
+        }
+    },
+    "develop": {}
+}

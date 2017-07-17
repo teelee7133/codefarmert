@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[requires]
+python_version = '3.5'
+
+[packages]
+boto3 = ">=1.4.4"
+dj-database-url = ">=0.4.2"
+Django = ">=1.10.7"
+django-extensions = ">=1.7.9"
+django-storages = "==1.5.2"
+gunicorn = ">=19.7.1"
+psycopg2 = ">=2.7.1"
+python-decouple = ">=3.0"
+wagtail = ">=1.8.2"
+whitenoise = ">=3.3.0"
