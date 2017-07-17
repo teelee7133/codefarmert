@@ -15,3 +15,5 @@ class TestDummy(unittest.TestCase):
     def test_dummy(self):
         # One equals one, test passed!
         self.assertEqual(1, 1)
+        # more random test
+        self.assertEqual(2, 2)
