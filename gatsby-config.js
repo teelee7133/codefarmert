@@ -83,7 +83,7 @@ module.exports = {
 
         // Include GTM in development.
         // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
+        includeInDevelopment: true,
 
         // datalayer to be set before GTM is loaded
         // should be an object or a function that is executed in the browser
@@ -96,21 +96,5 @@ module.exports = {
         //dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
-    {
-      resolve: `gatsby-plugin-csp`,
-      options: {
-        disableOnDev: true,
-        reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
-        mergeScriptHashes: false, // you can disable scripts sha256 hashes
-        mergeStyleHashes: false, // you can disable styles sha256 hashes
-        mergeDefaultDirectives: true,
-        directives: {
-          "script-src": "'self'  'unsafe-inline' www.google-analytics.com www.googletagmanager.com",
-          "style-src": "'self' 'unsafe-inline'",
-          "img-src": "'self' data: www.google-analytics.com"
-          // you can add your directives or override defaults
-        }
-      }
-    }
   ],
 }
