@@ -6,8 +6,8 @@ description: Very succint/informal summary of various database normal forms.
 
 
 One way of defining Database Normal Forms are using Tuples, Super Keys, Functional Dependency etc.
-However sometimes those definitions are very abstract and formal and I need some informal definitaion to intuitive give me a summary of what these normals are about.
-Therefore I have some informal summary as below.
+However sometimes those definitions are very abstract and formal and I need some informal definitaion to give me an intuitive way of understanding what these normals are about.
+Therefore I have put down some informal definition/summary as below.
 
 
 *   **1st Normal Form**

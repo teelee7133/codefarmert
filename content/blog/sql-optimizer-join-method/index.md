@@ -4,7 +4,7 @@ date: "2020-02-01T22:12:03.284Z"
 description: "A quick analysis of the most common sql database join methods."
 ---
 
-There are 3 common database join methods:
+There are 3 common database join methods (there are more, but lets start with these):
 
 *   Nested-loop
 *   Merge Sort
@@ -28,7 +28,7 @@ Let us suppose we have 2 tables `A` & `B`, with primary keys `A.id` and `B.id` r
 
         E.g. A has clustered index on A.b_id (likely if A has one-to-one relationship with B).
 
-        Plan: A simply Merge with B.
+        Plan: A simply **merge** with B.
 
         Cost: O(m + n)
 
@@ -69,4 +69,3 @@ Let us suppose we have 2 tables `A` & `B`, with primary keys `A.id` and `B.id` r
 For one row result, Nested-loop rocks.  For large pre-sorted dataset on the join keys, Merge Sort rocks.  For any other large dataset, Hash Join rocks.
 
 Hope this helps!!
-

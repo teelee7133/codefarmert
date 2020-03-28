@@ -18,8 +18,8 @@ which sending analytic data to google via the
 
 The gist of the whole operation is to customise something called a `customTask`,
 one of the preprocessing tasks google analytics script
-runs before sending the data to google analytics servers.  We can install a `customTask` to
-intercept the payload for the *Measurement Protocal*, stored in `hitPayload` variable
+runs before sending the data to google analytics servers.  In the `customTask`, we modify a `sendHitTask` so to
+intercept the payload for the *Measurement Protocal*, stored in `hitPayload` variable.
 
 Example payloads for measurement protocal:
 ```
@@ -30,7 +30,4 @@ v=1&tid=UA-XXXXX-Y&cid=555&t=pageview&dp=%2Fcontact
 
 ```
 
-
-
-
-
+We can then manipulate the payload at our heart's desire before it get sent to Google Analytics.
