@@ -1,7 +1,7 @@
 ---
-title: Google Analytics Tasks
+title: Cleaning PII data sent to google analytics
 date: "2020-02-01T22:12:03.284Z"
-description: "Google Analytic Tasks"
+description:  Some note on how to clean PII data before it get sent to Google Analytics
 ---
 
 Today I am trying to work out how to prevent some sensitive data being
