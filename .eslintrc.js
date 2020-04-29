@@ -25,7 +25,7 @@ module.exports = {
     'rules': {
         'indent': [
             'error',
-            4
+            2
         ],
         'linebreak-style': [
             'error',
@@ -33,11 +33,16 @@ module.exports = {
         ],
         'quotes': [
             'error',
-            'single'
+            'single',
+            { "allowTemplateLiterals": true }
         ],
         'semi': [
             'error',
             'always'
+        ],
+        'react/prop-types': [
+            'off',
+            {}
         ]
     }
 };
