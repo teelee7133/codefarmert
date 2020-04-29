@@ -3,53 +3,8 @@ import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-          fontFamily: `share-tech-mono, mono`,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `share-tech-mono, mono`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
+const Base = ( { header, main } ) => {
   return (
     <div
       style={{
@@ -57,25 +12,83 @@ const Layout = ({ location, title, children }) => {
         height: '100%'
       }}
     >
-      <div
+      <header>{ header }</header>
+      <main>{ main }</main>
+      <footer>
+
+      </footer>
+    </div>
+  );
+}
+
+const Container = ( { children } ) => {
+  return (
+    <div
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           fontFamily: `share-tech-mono, mono`,
-
         }}
       >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-
-        </footer>
-      </div>
+      {children}
     </div>
-
-  )
+  );
 }
 
-export default Layout
+const Layout = ( { title, children } ) => {
+  const header = (
+    <h3
+      style={{
+        fontFamily: `share-tech-mono, mono`,
+        marginTop: 0,
+      }}
+    >
+      <Link
+        style={{
+          boxShadow: `none`,
+          textDecoration: `none`,
+          color: `inherit`,
+        }}
+        to={`/`}
+      >
+        {title}
+      </Link>
+    </h3>
+  );
+  const container = <Container>{children}</Container>
+  return (
+    <Base header={header} main={container} />
+  );
+}
+
+const LayoutIndex = ({ title, children }) => {
+  const header = (
+    <h1
+      style={{
+        ...scale(1.5),
+        marginBottom: rhythm(1.5),
+        marginTop: 0,
+        fontFamily: `share-tech-mono, mono`,
+      }}
+    >
+      <Link
+        style={{
+          boxShadow: `none`,
+          textDecoration: `none`,
+          color: `inherit`,
+        }}
+        to={`/`}
+      >
+        {title}
+      </Link>
+    </h1>
+  );
+
+  return (
+    <Base header={header} main={children} />
+  );
+};
+
+export {Layout, LayoutIndex}

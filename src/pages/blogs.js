@@ -1,16 +1,16 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import { LayoutIndex } from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { Layout } from "../components/layout";
+import SEO from "../components/seo";
+import { rhythm } from "../utils/typography";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <LayoutIndex title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
@@ -44,7 +44,7 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
-    </LayoutIndex>
+    </Layout>
   )
 }
 
