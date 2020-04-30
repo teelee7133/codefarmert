@@ -1,54 +1,35 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
 
-import { LayoutIndex } from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { IndexLayout } from '../components/layout';
+import SEO from '../components/seo';
+import indexStyle from '../components/css/index.module.css';
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+
+const Index = ({ data }) => {
+  const siteTitle = data.site.siteMetadata.title;
 
   return (
-    <LayoutIndex title={siteTitle}>
-      <SEO title="All posts" />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link
-                  style={{
-                    boxShadow: `none`,
-                    textDecoration: 'none'
-                  }}
-                  to={node.fields.slug}
-                >
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
-    </LayoutIndex>
-  )
-}
+    <IndexLayout title={siteTitle}>
+      <SEO title='All posts' />
+      <div className={indexStyle.bannerContainer}>
+        <img src="/images/schrody.svg"/>
+      </div>
+      <div className={indexStyle.linkBlockContainer}>
+        <div className={indexStyle.linkBlock}>
+          <Link to="/projects">Work and Play</Link>
+        </div>
 
-export default BlogIndex
+        <div className={indexStyle.linkBlock}>
+          <Link to="/blogs">Blog</Link>
+        </div>
+      </div>
+
+    </IndexLayout>
+  );
+};
+
+export default Index;
 
 export const pageQuery = graphql`
   query {
@@ -73,4 +54,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

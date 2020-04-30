@@ -1,0 +1,37 @@
+.container {
+    background-color: white;
+    font-family: share-tech-mono, mono;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+.header-container {
+    background-color: rgb(166, 169, 211);
+    padding: 20px;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 60px;
+}
+
+.header {
+    font-family: share-tech-mono, mono;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    float: left;
+}
+
+.header-link{
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+}

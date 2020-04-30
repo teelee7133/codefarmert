@@ -7,6 +7,16 @@ module.exports = {
     social: {
       //twitter: ``,
     },
+    menuLinks: [
+      {
+        name: 'Work and Play',
+        link: '/projects'
+      },
+      {
+        name: 'Blogs',
+        link: '/blogs'
+      },
+    ]
   },
   plugins: [
     {
