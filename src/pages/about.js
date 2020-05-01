@@ -5,18 +5,18 @@ import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 
 
-const Projects = ({ data }) => {
+const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Layout title={siteTitle}>
-      <SEO title="Work and Fun" />
-      <div>tbd</div>
+      <SEO title="About" />
+      <div></div>
     </Layout>
   );
 };
 
-export default Projects;
+export default About;
 
 export const pageQuery = graphql`
   query {

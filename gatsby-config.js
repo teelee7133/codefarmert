@@ -9,12 +9,12 @@ module.exports = {
     },
     menuLinks: [
       {
-        name: 'Work and Play',
-        link: '/projects'
+        name: 'Blog',
+        link: '/blogs'
       },
       {
-        name: 'Blogs',
-        link: '/blogs'
+        name: 'About',
+        link: '/about'
       },
     ]
   },

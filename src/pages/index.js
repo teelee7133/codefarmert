@@ -17,11 +17,11 @@ const Index = ({ data }) => {
       </div>
       <div className={indexStyle.linkBlockContainer}>
         <div className={indexStyle.linkBlock}>
-          <Link to="/projects">Work and Play</Link>
+          <Link to="/blogs">Blog</Link>
         </div>
 
         <div className={indexStyle.linkBlock}>
-          <Link to="/blogs">Blog</Link>
+          <Link to="/about">About</Link>
         </div>
       </div>
 
