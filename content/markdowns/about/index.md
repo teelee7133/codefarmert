@@ -23,14 +23,14 @@ For myself, I am a full stack developer.  I fancy myself to be a bit better than
 ### Projects etc
 
 
-Sites I have worked on include:
+Some of the sites I have contributed to:
 
 * https://forbiddenplanet.com/
 * https://titanbooks.com/
 * https://titan-comics.com/
 * https://www.seo-london.org/
 
-I have two github accounts (they might merge into one some point in the future).
+Some code examples in two github accounts (these can potentially be merged as some point).
 
 * https://github.com/thomasina-lee
 * https://github.com/teelee7133
