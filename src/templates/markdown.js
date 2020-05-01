@@ -17,10 +17,10 @@ const MarkdownTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
+        <header style={{ marginTop: rhythm(1), marginBottom: rhythm(1) }}>
           <h1
             style={{
-              marginTop: rhythm(1),
+
               marginBottom: 0,
             }}
           >
@@ -31,7 +31,6 @@ const MarkdownTemplate = ({ data, pageContext, location }) => {
               style={{
                 ...scale(-1 / 5),
                 display: `block`,
-                marginBottom: rhythm(1),
               }}
             >
               {post.frontmatter.date}
