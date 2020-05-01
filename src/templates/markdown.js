@@ -5,7 +5,7 @@ import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const MarkdownTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
@@ -26,15 +26,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           >
             {post.frontmatter.title}
           </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
+          {post.frontmatter.date ?
+            <p
+              style={{
+                ...scale(-1 / 5),
+                display: `block`,
+                marginBottom: rhythm(1),
+              }}
+            >
+              {post.frontmatter.date}
+            </p> : null
+          }
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -75,10 +77,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   );
 };
 
-export default BlogPostTemplate;
+export default MarkdownTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query MarkdownBySlug($slug: String!) {
     site {
       siteMetadata {
         title
