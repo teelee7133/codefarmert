@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { rhythm } from '../utils/typography';
+import { rhythm, scale } from '../utils/typography';
 import { StaticQuery, graphql } from 'gatsby';
 import navStyles from '../components/css/nav.module.css';
 import layoutStyles from '../components/css/layout.module.css';
@@ -65,7 +65,10 @@ const Base = ( { title, children } ) => {
         </div>
       </header>
       <main>{children}</main>
-      <footer className={layoutStyles.footer}>
+      <footer
+        className={layoutStyles.footer}
+        style={{...scale(-2 / 5)}}
+      >
           Copyright © 2020 T Lee
       </footer>
     </div>

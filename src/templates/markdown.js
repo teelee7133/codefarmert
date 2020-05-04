@@ -4,6 +4,9 @@ import { Link, graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
+import markdownStyle from '../components/css/markdown.module.css';
+import 'katex/dist/katex.min.css';
+
 
 const MarkdownTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
@@ -16,45 +19,22 @@ const MarkdownTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
+      <article className={markdownStyle.container}>
         <header style={{ marginTop: rhythm(1), marginBottom: rhythm(1) }}>
-          <h1
-            style={{
-
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
+          <h1>{post.frontmatter.title}</h1>
           {post.frontmatter.date ?
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-              }}
-            >
+            <p style={{...scale(-1 / 5)}}>
               {post.frontmatter.date}
             </p> : null
           }
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <hr style={{marginBottom: rhythm(1)}}/>
       </article>
-      <nav>
+      <nav className={markdownStyle.nav}>
         <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-            margin: 0,
-            ...scale(-2 / 5),
-          }}
+          className={markdownStyle.navList}
+          style={{...scale(-2 / 5)}}
         >
           <li>
             {previous && (
