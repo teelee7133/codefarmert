@@ -4,9 +4,12 @@
     text-align: center;
 }
 
-.banner-container img {
+.banner {
+    display: inline-block;
+    min-height: 60vh;
     max-height: 100vw;
     max-width: 90vh;
+    background: no-repeat center/100% url("/images/schrody.svg");
     width: 100%;
 }
 

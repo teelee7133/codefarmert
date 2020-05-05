@@ -13,7 +13,7 @@ const Index = ({ data }) => {
     <IndexLayout title={siteTitle}>
       <SEO title='All posts' />
       <div className={indexStyle.bannerContainer}>
-        <img src="/images/schrody.svg"/>
+        <div className={indexStyle.banner}></div>
       </div>
       <div className={indexStyle.linkBlockContainer}>
         <div className={indexStyle.linkBlock}>
