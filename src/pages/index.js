@@ -6,11 +6,10 @@ import SEO from '../components/seo';
 import indexStyle from '../components/css/index.module.css';
 
 
-const Index = ({ data }) => {
-  const siteTitle = data.site.siteMetadata.title;
+const Index = () => {
 
   return (
-    <IndexLayout title={siteTitle}>
+    <IndexLayout>
       <SEO title='All posts' />
       <div className={indexStyle.bannerContainer}>
         <div className={indexStyle.banner}></div>
@@ -31,27 +30,3 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`;

@@ -6,10 +6,33 @@ import { StaticQuery, graphql } from 'gatsby';
 import navStyles from '../components/css/nav.module.css';
 import layoutStyles from '../components/css/layout.module.css';
 
-const Nav = () => (
-  <StaticQuery
+
+const Nav = ({data}) => {
+  return <nav className={navStyles.container}>
+    <input className={navStyles.menuBtn} type="checkbox" id="menu-btn" />
+    <label className={navStyles.menuIcon} htmlFor="menu-btn">
+      <span className={navStyles.navicon}></span>
+    </label>
+
+    <ul className={navStyles.menu} >
+      {data.site.siteMetadata.menuLinks.map(link => (
+        <li
+          key={link.link}
+        >
+          <Link to={link.link}>
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </nav>;
+};
+
+
+const Header = () => {
+  return <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
+      query SiteHeaderQuery {
         site {
           siteMetadata {
             title
@@ -22,48 +45,28 @@ const Nav = () => (
       }
     `}
     render={( data ) => (
-      <nav className={navStyles.container}>
-        <input className={navStyles.menuBtn} type="checkbox" id="menu-btn" />
-        <label className={navStyles.menuIcon} htmlFor="menu-btn">
-          <span className={navStyles.navicon}></span>
-        </label>
-
-        <ul className={navStyles.menu} >
-          {data.site.siteMetadata.menuLinks.map(link => (
-            <li
-              key={link.link}
-            >
-              <Link to={link.link}>
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    )}
-  />
-);
-
-
-const Base = ( { title, children } ) => {
-  const header = (
-    <h3 className={layoutStyles.header}>
-      <Link
-        className={layoutStyles.headerLink}
-        to={`/`}
-      >
-        {title}
-      </Link>
-    </h3>
-  );
-  return (
-    <div className={layoutStyles.container}>
       <header>
         <div className={layoutStyles.headerContainer}>
-          { header }
-          <Nav/>
+          <h3 className={layoutStyles.header}>
+            <Link
+              className={layoutStyles.headerLink}
+              to={`/`}
+            >
+              {data.site.siteMetadata.title}
+            </Link>
+          </h3>
+          <Nav data={data}/>
         </div>
       </header>
+
+    )}
+  />;
+};
+
+const Base = ( { children } ) => {
+  return (
+    <div className={layoutStyles.container}>
+      <Header/>
       <main>{children}</main>
       <footer
         className={layoutStyles.footer}
@@ -90,9 +93,9 @@ const Container = ( { children } ) => {
   );
 };
 
-const Layout = ( { title, children } ) => {
+const Layout = ( { children } ) => {
   return (
-    <Base title={title}>
+    <Base>
       <Container>
         { children }
       </Container>
@@ -100,9 +103,9 @@ const Layout = ( { title, children } ) => {
   );
 };
 
-const IndexLayout = ({ title, children }) => {
+const IndexLayout = ({ children }) => {
   return (
-    <Base title={title}>
+    <Base>
       { children }
     </Base>
   );
