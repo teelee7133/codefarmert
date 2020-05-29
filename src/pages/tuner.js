@@ -9,8 +9,8 @@ import tunerStyles from '../components/css/tuner.module.css';
 
 
 const Note = ({note}) => (
-  <div>
-    <div className={tunerStyles.noteName}>
+  <div className={tunerStyles.note}>
+    <div className={tunerStyles.noteName} >
       {note.noteName}
     </div>
     <div className={tunerStyles.noteResidue}>
@@ -68,11 +68,9 @@ const Tuner = () => {
   }, [active]);
 
 
-
   return (
     <div className={tunerStyles.outer}>
-
-      <div className={tunerStyles.displayArea} >
+      <div className={active? tunerStyles.displayArea : tunerStyles.displayAreaInactive}  >
         {notes.map((note, idx) => <Note key={idx} note={note} />)}
       </div>
       <button

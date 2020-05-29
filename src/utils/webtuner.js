@@ -106,19 +106,26 @@ export class WebTuner {
 
 
 export const summarize =  (detectedNotes) => {
-  const result = Object.entries(detectedNotes.reduce((res, note) => {
+  const grouped = detectedNotes.reduce((res, note) => {
     const noteName = note.noteName;
-    res[noteName] = (
-      res[noteName] ??
-      {noteName: noteName, count: 0, decibelTotal: 0, weightedResidue: 0}
-    );
-    res[noteName].count = res[noteName].count + 1;
-    res[noteName].decibelTotal = res[noteName].decibelTotal + note.decibel;
-    res[noteName].weightedResidue = res[noteName].weightedResidue + note.residue * note.decibel;
+    res[noteName] = (res[noteName] ?? []);
+    res[noteName].push(note);
+
     return res;
-  }, {}))
-    .map(([key, value]) => value)
-    .sort((a, b) => b.decibelTotal - a.decibelTotal);
-  result.forEach( x => x.weightedResidue = x.weightedResidue / x.decibelTotal);
+  }, {});
+  const result = Object.entries(grouped).map(([key, value]) => {
+    const maxDecibel = Math.max(...value.map(x => x.decibel));
+    const weightedResidueSum = value.map(
+      x => x.residue * Math.pow(10, ((x.decibel - maxDecibel)/10))
+    ).reduce((r, x) => r + x, 0) ;
+    const weightSum = value.map(
+      x => Math.pow(10, (x.decibel - maxDecibel)/10)
+    ).reduce((r, x) => r + x, 0);
+    return {
+      noteName: key,
+      weightedResidue: (weightedResidueSum / weightSum),
+      decibel: Math.log10(weightSum) * 10 + maxDecibel,
+    };
+  }).sort((a, b) => b.decibel - a.decibel);
   return result;
 }
