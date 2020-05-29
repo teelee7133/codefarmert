@@ -18,6 +18,9 @@ const Index = () => {
         <div className={indexStyle.linkBlock}>
           <Link to="/blogs">Blog</Link>
         </div>
+        <div className={indexStyle.linkBlock}>
+          <Link to="/tuner">Tuner</Link>
+        </div>
 
         <div className={indexStyle.linkBlock}>
           <Link to="/about">About</Link>
