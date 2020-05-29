@@ -1,0 +1,39 @@
+.outer {
+    width: 100%;
+}
+
+
+.activate-button {
+    background-color: darkcyan;
+    color: white;
+    border-radius: 3em;
+    padding: 0.5em;
+    width: 6em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.display-area {
+    padding: 1em;
+    border-color: darkcyan;
+    border-width: 1px;
+    border-style: solid;
+    color: darkcyan;
+    min-height: 10em;
+    overflow-y: hidden;
+}
+
+.note-name {
+    padding: 0.5em;
+}
+
+.note-residue {
+    padding: 0.5em;
+    font-size: 0.75em;
+}
+
+.note-debug {
+    font-size: 0.5em;
+}
