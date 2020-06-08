@@ -1,4 +1,6 @@
 
+
+
 .banner-container {
     width: 100%;
     text-align: center;
@@ -11,6 +13,14 @@
     max-width: 90vh;
     background: no-repeat center/100% url("/images/schrody.svg");
     width: 100%;
+}
+
+.redirect-notice-container {
+    width: 100%;
+    text-align: center;
+    color: orange;
+    padding: 10px;
+    font-size: 0.75em;
 }
 
 .link-block-container {

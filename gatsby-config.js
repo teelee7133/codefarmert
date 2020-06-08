@@ -20,8 +20,12 @@ module.exports = {
         name: 'About',
         link: '/about'
       },
-    ]
+    ],
+    highlightedReferrerRegex: (
+      '^https?://(www[.])?thomasinalee[.](dev|com)(/.*)?$'
+    ),
   },
+
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
