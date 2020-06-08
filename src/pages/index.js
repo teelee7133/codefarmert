@@ -9,7 +9,7 @@ import indexStyle from '../components/css/index.module.css';
 const Index = () => {
   return (
     <IndexLayout>
-      <SEO title='All posts' />
+      <SEO title='Home' />
       <div className={indexStyle.bannerContainer}>
         <div className={indexStyle.banner}></div>
       </div>
