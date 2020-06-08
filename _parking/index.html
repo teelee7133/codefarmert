@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="utf-8">
+
+    <title>Welcome to My Site</title>
+    <meta name="description" content="Holding page">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  </head>
+
+  <body>
+    <div class="image">
+    </div>
+    <article class="content">
+      <header>
+        <h1>Welcome!</h1>
+      </header>
+      <div>
+        <p>
+          Thank you for visiting my site.  Unfortunately, it is still under conceptual design.  Meanwhile, I would like to redirect you to an alternative site which has a more personal tone and feel, <a href="https://codefarmert.org">Code Farmer T</a>.
+        </p>
+        <p>
+          (If javascript is enabled, the redirection should take place in <b id="count">15</b> seconds.  Thanks again for visiting.)
+        </p>
+      </div>
+    </article>
+    <script>
+      (function(){
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+          var count = 15;
+          setInterval(function(){
+            count --;
+            document.querySelector('#count').textContent = count;
+            if (count <= 0) {
+              window.location.href = "https://codefarmert.org";
+            }
+          }, 1000)
+        });
+
+      })();
+
+    </script>
+  </body>
+</html>

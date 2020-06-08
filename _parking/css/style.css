@@ -1,0 +1,49 @@
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+
+.image {
+  /* Background image */
+  background-image: url('../img/flower.jpg');
+  /* Full-screen */
+  height: 100%;
+  /* Center the background image */
+  background-position: center;
+  /* Scale and zoom in the image */
+  background-size: cover;
+  /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
+  position: relative;
+
+}
+
+.content {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: left;
+  width: 90%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.25em;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .content {
+    top: 30%;
+    left: 30%;
+    transform: translate(-30%, -30%);
+    width: 60%;
+    font-size: 1.5em;
+  }
+
+}
+
+#count {
+  color: red;
+}
+
+

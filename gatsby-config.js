@@ -21,9 +21,6 @@ module.exports = {
         link: '/about'
       },
     ],
-    highlightedReferrerRegex: (
-      '^https?://(www[.])?thomasinalee[.](dev|com)(/.*)?$'
-    ),
   },
 
   plugins: [
