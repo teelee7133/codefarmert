@@ -71,8 +71,8 @@ const Tuner = () => {
   return (
     <>
       <div className={tunerStyles.introduction}>
-        This app analyses and detects music notes being play.
-        An intended use is for tuning instruments.  Enjoy!
+        This app analyses and detects music notes being played.
+        One intended use instrument tuning.  Hope it is useful!
       </div>
       <div className={tunerStyles.outer}>
         <div className={active ? tunerStyles.displayArea : tunerStyles.displayAreaInactive}  >
