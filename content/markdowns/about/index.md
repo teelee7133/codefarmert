@@ -15,9 +15,9 @@ As for myself, I am a full stack developer.  I fancy myself to be a bit better t
 
 ### Skills
 
-*  Django
-*  Reactjs
-*  Postgresql
+My strongest skills would probably be __Django__, __Python__ and __SQL__.  Having said that, throughout my career, I have come across numerous technologies, and I feel those could probably be best presented with a word/tag cloud.
+
+![Skills Word Cloud](skills.svg)
 
 
 ### Projects etc
@@ -30,7 +30,10 @@ Some of the sites I have contributed to:
 * https://titan-comics.com/
 * https://www.seo-london.org/
 
-Some code examples in two github accounts (these can potentially be merged as some point).
 
-* https://github.com/thomasina-lee
-* https://github.com/teelee7133
+__![github logo](github-logo.svg) github__
+
+Some code examples can be found in two github accounts (these can potentially be merged as some point).
+
+*   https://github.com/thomasina-lee
+*   https://github.com/teelee7133

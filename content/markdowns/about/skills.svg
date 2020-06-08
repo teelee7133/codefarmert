@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+<style>text{font-family:'Droid Sans Mono';font-weight:normal;font-style:normal;}</style>
+<rect width="100%" height="100%" style="fill:white"></rect>
+<text transform="translate(21,322)" font-size="160" style="fill:rgb(152, 216, 62)">Django</text>
+<text transform="translate(38,126)" font-size="152" style="fill:rgb(72, 22, 104)">python</text>
+<text transform="translate(414,194)" font-size="93" style="fill:rgb(45, 178, 125)">SQL</text>
+<text transform="translate(177,174)" font-size="40" style="fill:rgb(61, 78, 138)">javascript</text>
+<text transform="translate(238,356)" font-size="40" style="fill:rgb(86, 198, 103)">Reactjs</text>
+<text transform="translate(40,25)" font-size="32" style="fill:rgb(68, 57, 131)">postgresql</text>
+<text transform="translate(85,384)" font-size="32" style="fill:rgb(70, 10, 93)">Mysql</text>
+<text transform="translate(228,217)" font-size="32" style="fill:rgb(31, 161, 136)">git</text>
+<text transform="translate(238,387)" font-size="27" style="fill:rgb(68, 59, 132)">Query Optimization</text>
+<text transform="translate(295,219)" font-size="24" style="fill:rgb(31, 151, 139)">Regex</text>
+<text transform="translate(427,220)" font-size="21" style="fill:rgb(194, 223, 35)">pytest</text>
+<text transform="translate(384,223)" font-size="21" style="fill:rgb(66, 190, 113)">aws</text>
+<text transform="translate(80,148)" font-size="21" style="fill:rgb(52, 97, 141)">s3</text>
+<text transform="translate(43,180)" font-size="21" style="fill:rgb(70, 51, 127)">Celery</text>
+<text transform="translate(215,149) rotate(-90)" font-size="21" style="fill:rgb(68, 58, 131)">Linux</text>
+<text transform="translate(391,37)" font-size="21" style="fill:rgb(96, 202, 96)">Ubuntu</text>
+<text transform="translate(45,346)" font-size="21" style="fill:rgb(30, 156, 137)">nodejs</text>
+<text transform="translate(511,22)" font-size="21" style="fill:rgb(72, 40, 120)">npm</text>
+<text transform="translate(28,194)" font-size="19" style="fill:rgb(72, 24, 106)">HTML</text>
+<text transform="translate(114,272)" font-size="19" style="fill:rgb(48, 105, 142)">CSS</text>
+<text transform="translate(507,341)" font-size="19" style="fill:rgb(218, 227, 25)">tinymce</text>
+<text transform="translate(216,140)" font-size="17" style="fill:rgb(42, 176, 127)">django cms</text>
+<text transform="translate(504,368)" font-size="13" style="fill:rgb(34, 140, 141)">salt stack</text>
+<text transform="translate(21,372)" font-size="13" style="fill:rgb(62, 73, 137)">gatsby</text>
+<text transform="translate(73,195)" font-size="13" style="fill:rgb(72, 27, 109)">ImmutableJs</text>
+<text transform="translate(173,371)" font-size="13" style="fill:rgb(34, 167, 133)">jinja2</text>
+<text transform="translate(259,11)" font-size="13" style="fill:rgb(231, 228, 25)">pipenv</text>
+<text transform="translate(432,97)" font-size="13" style="fill:rgb(236, 229, 27)">make</text>
+<text transform="translate(160,337) rotate(-90)" font-size="10" style="fill:rgb(78, 195, 107)">docker</text>
+<text transform="translate(41,391)" font-size="10" style="fill:rgb(70, 10, 93)">ansible</text>
+<text transform="translate(187,286)" font-size="10" style="fill:rgb(226, 228, 24)">nginx</text>
+</svg>
