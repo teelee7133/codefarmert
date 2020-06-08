@@ -69,17 +69,26 @@ const Tuner = () => {
 
 
   return (
-    <div className={tunerStyles.outer}>
-      <div className={active? tunerStyles.displayArea : tunerStyles.displayAreaInactive}  >
-        {notes.map((note, idx) => <Note key={idx} note={note} />)}
+    <>
+      <div className={tunerStyles.introduction}>
+        This app analyses and detects music notes being play.
+        An intended use is for tuning instruments.  Enjoy!
       </div>
-      <button
-        onClick={() => setActive(active => !active)}
-        className={tunerStyles.activateButton}
-      >
-        {active ? 'Stop' : 'Start'}
-      </button>
-    </div>
+      <div className={tunerStyles.outer}>
+        <div className={active ? tunerStyles.displayArea : tunerStyles.displayAreaInactive}  >
+          {active
+            ? notes.map((note, idx) => <Note key={idx} note={note} />)
+            :<div className={tunerStyles.inviteMessage}><p>Click <b>Start</b> to Detect!</p></div>
+          }
+        </div>
+        <button
+          onClick={() => setActive(active => !active)}
+          className={tunerStyles.activateButton}
+        >
+          {active ? 'Stop' : 'Start'}
+        </button>
+      </div>
+    </>
   );
 };
 

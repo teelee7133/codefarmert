@@ -1,7 +1,10 @@
+.introduction{
+    padding: 1em;
+}
+
 .outer {
     width: 100%;
 }
-
 
 .activate-button {
     background-color: darkcyan;
@@ -35,6 +38,10 @@
 .display-area-inactive {
     composes: display-area;
     background-color: lightgrey;
+}
+
+.invite-message {
+    padding: 1.5em;
 }
 
 .note {
