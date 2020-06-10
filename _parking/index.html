@@ -35,10 +35,12 @@
           var count = 15;
           setInterval(function(){
             count --;
-            document.querySelector('#count').textContent = count;
+            if (count >= 0) {
+              document.querySelector('#count').textContent = count;
+            }
             if (count <= 0) {
               window.location.href = "https://codefarmert.org";
-            }
+            };
           }, 1000)
         });
 
