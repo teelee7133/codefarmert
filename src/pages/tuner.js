@@ -93,7 +93,7 @@ const Tuner = () => {
 };
 
 
-const Index = () => {
+const TunerPage = () => {
   return (
     <Layout>
       <SEO title='Tuner' />
@@ -104,4 +104,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default TunerPage;

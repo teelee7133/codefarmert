@@ -7,7 +7,8 @@ module.exports = {
     },
     'extends': [
         'eslint:recommended',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        "prettier"
     ],
     'globals': {
         'Atomics': 'readonly',
@@ -22,6 +23,7 @@ module.exports = {
     },
     'plugins': [
         'react',
+        'prettier'
     ],
     'rules': {
         'indent': [
@@ -44,6 +46,7 @@ module.exports = {
         'react/prop-types': [
             'off',
             {}
-        ]
+        ],
+        "prettier/prettier": 2
     }
 };

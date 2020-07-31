@@ -49,21 +49,30 @@ const getNote = (freq)  => {
 export class WebTuner {
 
   async init () {
-    this.stream = await navigator.mediaDevices.getUserMedia({audio: true});
-    this.audioCtx = new window.AudioContext();
-    this.source = this.audioCtx.createMediaStreamSource(this.stream);
-    this.analyser = this.audioCtx.createAnalyser();
-    this.analyser.minDecibels = -70;
-    this.source.connect(this.analyser);
-    this.data = {};
-    this.data.signal = new Uint8Array(this.analyser.frequencyBinCount);
-    this.data.smoothed = new Float64Array(this.analyser.frequencyBinCount - 4);
-    this.data.d1 = new Float64Array(this.analyser.frequencyBinCount - 6);
+    try {
+      this.stream = await navigator.mediaDevices.getUserMedia({audio: true});
+      this.audioCtx = new window.AudioContext();
+      this.source = this.audioCtx.createMediaStreamSource(this.stream);
+      this.analyser = this.audioCtx.createAnalyser();
+      this.analyser.minDecibels = -70;
+      this.source.connect(this.analyser);
+      this.data = {};
+      this.data.signal = new Uint8Array(this.analyser.frequencyBinCount);
+      this.data.smoothed = new Float64Array(this.analyser.frequencyBinCount - 4);
+      this.data.d1 = new Float64Array(this.analyser.frequencyBinCount - 6);
+    } catch (e) {
+      try {
+        this.close();
+      } catch (_e) {
+        // eslint-disable-next-line no-empty
+      }
+      throw e;
+    }
   }
 
   close () {
-    this.audioCtx.close();
-    this.stream.getTracks().forEach(track => track.stop());
+    this.audioCtx && this.audioCtx.close();
+    this.stream && this.stream.getTracks().forEach(track => track.stop());
   }
 
   async resume () {
