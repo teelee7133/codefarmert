@@ -10,25 +10,37 @@ const VoiceEnhancer = () => {
   const [recordingURLs, setRecordingURLs] = useState(List());
   const recorderStopperContainer = useRef({ stop: null });
 
+  const reset = () => {
+    setIsRecording(() => {
+      recorderStopperContainer.current.stop = null;
+      return false;
+    });
+  };
+
+  const onerror = () => {
+    reset();
+  };
+
+  const onstop = url => {
+    if (url) {
+      setRecordingURLs(recordingURLs => recordingURLs.push(url));
+    }
+    reset();
+  };
+
   const record = async () => {
     try {
-      recorderStopperContainer.current.stop = await recordAudio();
+      recorderStopperContainer.current.stop = await recordAudio(
+        onstop,
+        onerror
+      );
     } catch (e) {
-      recorderStopperContainer.current.stop = null;
-      setIsRecording(false);
+      reset();
     }
   };
 
-  const stop = async () => {
-    try {
-      const url = await recorderStopperContainer.current.stop();
-      if (url) {
-        setRecordingURLs(recordingURLs => recordingURLs.push(url));
-      }
-    } finally {
-      recorderStopperContainer.current.stop = null;
-      setIsRecording(false);
-    }
+  const stop = () => {
+    recorderStopperContainer.current.stop();
   };
 
   useEffect(() => {

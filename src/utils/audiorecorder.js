@@ -1,4 +1,4 @@
-export const recordAudio = async () => {
+export const recordAudio = async (onstop, onerror) => {
   let stream;
   let mediaRecorder;
 
@@ -8,7 +8,7 @@ export const recordAudio = async () => {
         stream.getTracks().forEach(track => {
           try {
             track.stop();
-          } catch {
+          } finally {
             // eslint-disable-next-line no-empty
           }
         });
@@ -28,6 +28,26 @@ export const recordAudio = async () => {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.onerror = () => {
+      console.log('onerror');
+      onerror();
+    };
+    mediaRecorder.onstop = () => {
+      try {
+        console.log('waitForStop onstop 1');
+        const blob = new Blob(chucks, { type: mediaRecorder.mimeType });
+        chucks = [];
+        const audioURL = window.URL.createObjectURL(blob);
+
+        onstop(audioURL);
+      } catch (e) {
+        console.log(e);
+        onerror(e);
+      } finally {
+        close();
+      }
+    };
+
     let chucks = [];
 
     mediaRecorder.ondataavailable = ev => {
@@ -36,33 +56,13 @@ export const recordAudio = async () => {
 
     mediaRecorder.start();
 
-    const waitForStop = async () => {
-      return new Promise((resolve, reject) => {
-        mediaRecorder.onstop = () => {
-          try {
-            const blob = new Blob(chucks, { type: mediaRecorder.mimeType });
-            chucks = [];
-            const audioURL = window.URL.createObjectURL(blob);
-
-            resolve(audioURL);
-          } catch (e) {
-            reject(e);
-          }
-        };
-        mediaRecorder.stop();
-      });
+    const stop = () => {
+      mediaRecorder.stop();
     };
 
-    const stop = async () => {
-      try {
-        return await waitForStop();
-      } finally {
-        close();
-      }
-    };
     return stop;
   } catch (e) {
     close();
-    throw e;
+    onerror(e);
   }
 };
