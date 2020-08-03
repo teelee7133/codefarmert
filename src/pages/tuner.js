@@ -1,18 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-
 import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { WebTuner, summarize } from '../utils/webtuner';
 import tunerStyles from '../components/css/tuner.module.css';
 
-
-
-const Note = ({note}) => (
+const Note = ({ note }) => (
   <div className={tunerStyles.note}>
-    <div className={tunerStyles.noteName} >
-      {note.noteName}
-    </div>
+    <div className={tunerStyles.noteName}>{note.noteName}</div>
     <div className={tunerStyles.noteResidue}>
       {note.weightedResidue.toFixed(2)}
     </div>
@@ -27,7 +22,7 @@ const Tuner = () => {
   const init = async () => {
     const webtuner = new WebTuner();
     await webtuner.init();
-    webtunerRef.current = {webtuner};
+    webtunerRef.current = { webtuner };
   };
 
   const close = async () => {
@@ -38,18 +33,19 @@ const Tuner = () => {
   const update = () => {
     const webtuner = webtunerRef.current.webtuner;
 
-    if (!(active && webtuner)) {return;}
+    if (!(active && webtuner)) {
+      return;
+    }
     try {
       const mynotes = summarize(webtuner.detectNotes());
       setNotes(mynotes);
       window.requestAnimationFrame(update);
     } catch (e) {
       setActive(0);
-      console.log(e);
     }
   };
 
-  useEffect( () => {
+  useEffect(() => {
     if (active && !webtunerRef.current.webtuner) {
       (async () => {
         try {
@@ -57,7 +53,6 @@ const Tuner = () => {
           update();
         } catch (e) {
           setActive(0);
-          console.log(e);
         }
       })();
     }
@@ -67,19 +62,27 @@ const Tuner = () => {
     return () => {};
   }, [active]);
 
-
   return (
     <>
       <div className={tunerStyles.introduction}>
-        This app analyses and detects music notes being played.
-        One intended use is instrument tuning.  Hope it helps!
+        This app analyses and detects music notes being played. One intended use
+        is instrument tuning. Hope it helps!
       </div>
       <div className={tunerStyles.outer}>
-        <div className={active ? tunerStyles.displayArea : tunerStyles.displayAreaInactive}  >
-          {active
-            ? notes.map((note, idx) => <Note key={idx} note={note} />)
-            :<div className={tunerStyles.inviteMessage}><p>Click <b>Start</b> to Detect!</p></div>
+        <div
+          className={
+            active ? tunerStyles.displayArea : tunerStyles.displayAreaInactive
           }
+        >
+          {active ? (
+            notes.map((note, idx) => <Note key={idx} note={note} />)
+          ) : (
+            <div className={tunerStyles.inviteMessage}>
+              <p>
+                Click <b>Start</b> to Detect!
+              </p>
+            </div>
+          )}
         </div>
         <button
           onClick={() => setActive(active => !active)}
@@ -92,11 +95,10 @@ const Tuner = () => {
   );
 };
 
-
 const TunerPage = () => {
   return (
     <Layout>
-      <SEO title='Tuner' />
+      <SEO title="Tuner" />
       <div>
         <Tuner />
       </div>

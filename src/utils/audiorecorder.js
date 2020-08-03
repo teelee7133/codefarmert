@@ -29,19 +29,16 @@ export const recordAudio = async (onstop, onerror) => {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.onerror = () => {
-      console.log('onerror');
       onerror();
     };
     mediaRecorder.onstop = () => {
       try {
-        console.log('waitForStop onstop 1');
         const blob = new Blob(chucks, { type: mediaRecorder.mimeType });
         chucks = [];
         const audioURL = window.URL.createObjectURL(blob);
 
         onstop(audioURL);
       } catch (e) {
-        console.log(e);
         onerror(e);
       } finally {
         close();
