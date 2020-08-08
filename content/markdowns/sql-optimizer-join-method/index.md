@@ -2,6 +2,7 @@
 title: Simple analysis on Nested-loop, Merge Sort and Hash Join
 date: "2020-02-01T22:12:03.284Z"
 description: "A quick analysis of the most common sql database join methods."
+type: blog
 ---
 
 There are 3 common database join methods (there are more, but lets start with these):

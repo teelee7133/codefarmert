@@ -2,6 +2,7 @@
 title: Sql Vs Command Line Data Manipulation
 date: "2020-02-01T22:12:03.284Z"
 description:
+type: pending
 ---
 
 I have learned a couple of data manipulation commands, and here I have put it next to the closest SQL commands for a self quick reminder.

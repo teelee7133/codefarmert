@@ -2,6 +2,7 @@
 title: Locking with Cache
 date: "2020-06-25T22:12:03.284Z"
 description: How to do mutual exclusive lock with cache
+type: pending
 ---
 
 

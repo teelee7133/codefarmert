@@ -2,6 +2,7 @@
 title: McCall Search Model
 date: "2020-05-01T00:00:00"
 description: A journey into McCall Search Model
+type: blog
 ---
 
 I have been keen to read a bit more about quantitative economics,

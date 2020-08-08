@@ -2,6 +2,7 @@
 title: Informal Normalization/Normal Forms
 date: "2018-05-28T22:40:32.169Z"
 description: Very succint/informal summary of various database normal forms.
+type: blog
 ---
 
 

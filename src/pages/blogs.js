@@ -25,7 +25,7 @@ const BlogIndex = ({ data }) => {
                 <Link
                   style={{
                     boxShadow: `none`,
-                    textDecoration: 'none'
+                    textDecoration: 'none',
                   }}
                   to={node.fields.slug}
                 >
@@ -58,7 +58,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {frontmatter: {date: {ne: null}}},
+      filter: { frontmatter: { type: { eq: "blog" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

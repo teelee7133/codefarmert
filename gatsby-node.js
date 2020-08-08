@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          filter: {frontmatter: {date: {ne: null}}}
+          filter: { frontmatter: { type: { eq: "blog" } } }
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           edges {
@@ -26,7 +26,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `
   );
-
 
   if (resultPosts.errors) {
     throw resultPosts.errors;
@@ -53,9 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const resultOthers = await graphql(
     `
       {
-        allMarkdownRemark(
-          filter: {frontmatter: {date: {eq: null}}}
-        ) {
+        allMarkdownRemark(filter: { frontmatter: { type: { eq: "page" } } }) {
           edges {
             node {
               fields {
@@ -71,7 +68,6 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   );
 
-
   if (resultOthers.errors) {
     throw resultOthers.errors;
   }
@@ -79,8 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog posts pages.
   const pages = resultOthers.data.allMarkdownRemark.edges;
 
-  pages.forEach((page) => {
-
+  pages.forEach(page => {
     createPage({
       path: page.node.fields.slug,
       component: markDown,
@@ -89,7 +84,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
