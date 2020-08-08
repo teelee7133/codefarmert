@@ -30,16 +30,16 @@ const getNote = freq => {
   const C4 = 261.626;
   const notes = [
     'C',
-    'C#',
+    'C♯/D♭',
     'D',
-    'Eb',
+    'D♯/E♭',
     'E',
     'F',
-    'Gb',
+    'F♯/G♭',
     'G',
-    'Ab',
+    'G♯/A♭',
     'A',
-    'Bb',
+    'A♯/B♭',
     'B',
   ];
   const transformed = (Math.log(freq / C4) / Math.log(2)) * 12 + 48;
