@@ -26,11 +26,9 @@
 
 }
 
-
 .recording-audio {
     margin: 0.25em;
 }
-
 
 .gain-input-container {
     display: flex;
@@ -41,7 +39,6 @@
     display: flex;
     justify-items: center;
 }
-
 
 .delete-button {
     background: transparent;
