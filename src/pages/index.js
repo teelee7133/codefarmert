@@ -19,6 +19,9 @@ const Index = () => {
         <Link className={indexStyle.linkBlock} to="/tuner">
           Tuner
         </Link>
+        <Link className={indexStyle.linkBlock} to="/audioreverb">
+          Reverb
+        </Link>
         <Link className={indexStyle.linkBlock} to="/about">
           About
         </Link>

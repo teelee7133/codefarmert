@@ -10,15 +10,19 @@ module.exports = {
     menuLinks: [
       {
         name: 'Blog',
-        link: '/blogs'
+        link: '/blogs',
       },
       {
         name: 'Tuner',
-        link: '/tuner'
+        link: '/tuner',
+      },
+      {
+        name: 'Reverb',
+        link: '/audioreverb',
       },
       {
         name: 'About',
-        link: '/about'
+        link: '/about',
       },
     ],
   },
