@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  RecoilRoot,
-  atom,
-  useRecoilState,
-  useSetRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { RecoilRoot, atom, useSetRecoilState, useRecoilValue } from 'recoil';
 import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { recordAudio } from '../utils/audiorecorder';
-import { reverb } from '../utils/reverb';
+import { ReverbAudioGraph } from '../utils/reverb';
 import reverbStyles from '../components/css/audioreverb.module.css';
 
 const audioURLsState = atom({
@@ -17,34 +11,48 @@ const audioURLsState = atom({
   default: [],
 });
 
-const selectedAudioURLState = atom({
-  key: 'selectedAudioURL',
-  default: null,
-});
-
 const AudioItem = ({ url }) => {
-  const [selectedAudioURL, setSelectedAudioURL] = useRecoilState(
-    selectedAudioURLState
-  );
   const setAudioURLs = useSetRecoilState(audioURLsState);
+  const reverbAudioGraph = useRef(null);
+  const audioRef = useRef(null);
+  const [gain, setGain] = useState(0.4);
 
-  const onChange = () => {
-    setSelectedAudioURL(selectedAudioURL != url ? url : null);
-  };
   const onDeleteButtonClick = () => {
+    if (reverbAudioGraph.current) {
+      reverbAudioGraph.current.close();
+    }
     setAudioURLs(audioUrls => audioUrls.filter(x => x !== url));
   };
 
+  useEffect(() => {
+    if (audioRef.current && !reverbAudioGraph.current)
+      (async () => {
+        try {
+          reverbAudioGraph.current = new ReverbAudioGraph({
+            audioElement: audioRef.current,
+            gain: gain,
+          });
+          await reverbAudioGraph.current.init();
+        } catch {
+          reverbAudioGraph.current = null;
+        }
+      })();
+  }, [audioRef]);
+
+  useEffect(() => {
+    if (reverbAudioGraph.current) {
+      reverbAudioGraph.current.gain = gain;
+    }
+  }, [gain]);
+
   return (
     <>
-      <audio className={reverbStyles.recordingAudio} controls src={url} />
-
-      <div key={`control-div-${url}`} className={reverbStyles.controlContainer}>
-        <input
-          type="radio"
-          checked={selectedAudioURL == url}
-          onChange={onChange}
-          name="url_to_play"
+      <div key="audio" className={reverbStyles.recordingAudioContainer}>
+        <audio
+          ref={audioRef}
+          className={reverbStyles.recordingAudio}
+          controls
+          src={url}
         />
         <button
           type="button"
@@ -53,6 +61,19 @@ const AudioItem = ({ url }) => {
         >
           &#10006;
         </button>
+      </div>
+      <div key="input" className={reverbStyles.gainInputContainer}>
+        <label>Reverb: </label>
+        <input
+          type="range"
+          onChange={ev => {
+            setGain(ev.target.value);
+          }}
+          defaultValue={gain}
+          min="0"
+          max="0.8"
+          step="0.05"
+        />
       </div>
     </>
   );
@@ -73,7 +94,6 @@ const AudioItemList = () => {
 const RecordAudio = () => {
   const [isRecording, setIsRecording] = useState(false);
   const setaudioURLs = useSetRecoilState(audioURLsState);
-  const selectedAudioURL = useSetRecoilState(selectedAudioURLState);
 
   const recorderStopperContainer = useRef({ stop: null });
 
@@ -93,7 +113,6 @@ const RecordAudio = () => {
       setaudioURLs(audioItems => {
         return [...audioItems, url];
       });
-      selectedAudioURL(url);
     }
     reset();
   };
@@ -122,64 +141,15 @@ const RecordAudio = () => {
     }
   }, [isRecording]);
 
-  const recButtonOnClick = () => setIsRecording(isRecording => !isRecording);
-
   return (
-    <button className={reverbStyles.recordButton} onClick={recButtonOnClick}>
+    <button
+      className={reverbStyles.recordButton}
+      onClick={() => setIsRecording(isRecording => !isRecording)}
+    >
       {' '}
       {isRecording ? 'Stop' : 'Record'}{' '}
     </button>
   );
-};
-
-const ReverbAudio = () => {
-  const selectedAudioURL = useRecoilValue(selectedAudioURLState);
-  const cancelReverb = useRef(null);
-  const audioRef = useRef(null);
-  const [gain, setGain] = useState(0.4);
-
-  const stop = async () => {
-    if (cancelReverb.current) {
-      await cancelReverb.current();
-      cancelReverb.current = null;
-    }
-  };
-  const start = () => {
-    if (selectedAudioURL) {
-      cancelReverb.current = reverb(audioRef.current, gain);
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      await stop();
-      start();
-    })();
-  }, [selectedAudioURL, gain]);
-
-  const onChange = ev => {
-    setGain(ev.target.value);
-  };
-
-  return selectedAudioURL ? (
-    <>
-      <audio
-        className={reverbStyles.reverbAudio}
-        controls
-        ref={audioRef}
-        src={selectedAudioURL}
-      />
-      <input
-        className={reverbStyles.gainRangeInput}
-        type="range"
-        onChange={onChange}
-        defaultValue={gain}
-        min="0"
-        max="0.8"
-        step="0.1"
-      />
-    </>
-  ) : null;
 };
 
 const ReverbAudioPage = () => {
@@ -190,7 +160,6 @@ const ReverbAudioPage = () => {
         <RecordAudio />
         <div className={reverbStyles.container}>
           <AudioItemList />
-          <ReverbAudio />
         </div>
       </RecoilRoot>
     </Layout>
