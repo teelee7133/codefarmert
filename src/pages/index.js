@@ -16,11 +16,8 @@ const Index = () => {
         <Link className={indexStyle.linkBlock} to="/blogs">
           Blog
         </Link>
-        <Link className={indexStyle.linkBlock} to="/tuner">
-          Tuner
-        </Link>
-        <Link className={indexStyle.linkBlock} to="/audioreverb">
-          Reverb
+        <Link className={indexStyle.linkBlock} to="/mini-apps">
+          Mini Apps
         </Link>
         <Link className={indexStyle.linkBlock} to="/about">
           About

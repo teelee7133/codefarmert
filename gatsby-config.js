@@ -13,12 +13,8 @@ module.exports = {
         link: '/blogs',
       },
       {
-        name: 'Tuner',
-        link: '/tuner',
-      },
-      {
-        name: 'Reverb',
-        link: '/audioreverb',
+        name: 'Mini Apps',
+        link: '/mini-apps',
       },
       {
         name: 'About',
