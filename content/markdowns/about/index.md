@@ -2,6 +2,7 @@
 title: About
 
 description:  About
+type: page
 ---
 
 
