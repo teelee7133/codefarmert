@@ -18,12 +18,22 @@
     max-width: 20em;
     margin-left: auto;
     margin-right: auto;
+    border: 1px grey solid;
+}
+
+.empty-list-message{
+    padding: 1em;
+}
+
+.audio-item-container{
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .recording-audio-container {
     display: flex;
     align-items: center;
-
+    justify-content: space-evenly;
 }
 
 .recording-audio {

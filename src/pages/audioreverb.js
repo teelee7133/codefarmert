@@ -46,7 +46,7 @@ const AudioItem = ({ url }) => {
   }, [gain]);
 
   return (
-    <>
+    <div className={reverbStyles.audioItemContainer}>
       <div key="audio" className={reverbStyles.recordingAudioContainer}>
         <audio
           ref={audioRef}
@@ -75,19 +75,25 @@ const AudioItem = ({ url }) => {
           step="0.05"
         />
       </div>
-    </>
+    </div>
   );
 };
 
 const AudioItemList = () => {
   const audioURLs = useRecoilValue(audioURLsState);
 
-  return (
+  return audioURLs.length > 0 ? (
     <>
       {audioURLs.map(url => (
         <AudioItem key={url} url={url} />
       ))}
     </>
+  ) : (
+    <div className={reverbStyles.emptyListMessage}>
+      <p>
+        Make a sound recording and hear some reverb/echo effects applied to it!
+      </p>
+    </div>
   );
 };
 
