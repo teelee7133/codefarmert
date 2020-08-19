@@ -6,79 +6,70 @@ import { StaticQuery, graphql } from 'gatsby';
 import navStyles from '../components/css/nav.module.css';
 import layoutStyles from '../components/css/layout.module.css';
 
+const Nav = ({ data }) => {
+  return (
+    <nav className={navStyles.container}>
+      <input className={navStyles.menuBtn} type="checkbox" id="menu-btn" />
+      <label className={navStyles.menuIcon} htmlFor="menu-btn">
+        <span className={navStyles.navicon}></span>
+      </label>
 
-const Nav = ({data}) => {
-  return <nav className={navStyles.container}>
-    <input className={navStyles.menuBtn} type="checkbox" id="menu-btn" />
-    <label className={navStyles.menuIcon} htmlFor="menu-btn">
-      <span className={navStyles.navicon}></span>
-    </label>
-
-    <ul className={navStyles.menu} >
-      {data.site.siteMetadata.menuLinks.map(link => (
-        <li
-          key={link.link}
-        >
-          <Link to={link.link}>
-            {link.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </nav>;
+      <ul className={navStyles.menu}>
+        {data.site.siteMetadata.menuLinks.map(link => (
+          <li key={link.link}>
+            <Link to={link.link}>{link.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 };
 
-
 const Header = () => {
-  return <StaticQuery
-    query={graphql`
-      query SiteHeaderQuery {
-        site {
-          siteMetadata {
-            title
+  return (
+    <StaticQuery
+      query={graphql`
+        query SiteHeaderQuery {
+          site {
+            siteMetadata {
+              title
               menuLinks {
                 name
                 link
+              }
             }
           }
         }
-      }
-    `}
-    render={( data ) => (
-      <header>
-        <div className={layoutStyles.headerContainer}>
-          <h3 className={layoutStyles.header}>
-            <Link
-              className={layoutStyles.headerLink}
-              to={`/`}
-            >
-              {data.site.siteMetadata.title}
-            </Link>
-          </h3>
-          <Nav data={data}/>
-        </div>
-      </header>
-
-    )}
-  />;
+      `}
+      render={data => (
+        <header>
+          <div className={layoutStyles.headerContainer}>
+            <h3 className={layoutStyles.header}>
+              <Link className={layoutStyles.headerLink} to={`/`}>
+                {data.site.siteMetadata.title}
+              </Link>
+            </h3>
+            <Nav data={data} />
+          </div>
+        </header>
+      )}
+    />
+  );
 };
 
-const Base = ( { children } ) => {
+const Base = ({ children }) => {
   return (
     <div className={layoutStyles.container}>
-      <Header/>
+      <Header />
       <main>{children}</main>
-      <footer
-        className={layoutStyles.footer}
-        style={{...scale(-2 / 5)}}
-      >
-          Copyright © 2020 T Lee
+      <footer className={layoutStyles.footer} style={{ ...scale(-2 / 5) }}>
+        Copyright © 2020 T Lee
       </footer>
     </div>
   );
 };
 
-const Container = ( { children } ) => {
+const Container = ({ children }) => {
   return (
     <div
       style={{
@@ -93,22 +84,16 @@ const Container = ( { children } ) => {
   );
 };
 
-const Layout = ( { children } ) => {
+const Layout = ({ children }) => {
   return (
     <Base>
-      <Container>
-        { children }
-      </Container>
+      <Container>{children}</Container>
     </Base>
   );
 };
 
 const IndexLayout = ({ children }) => {
-  return (
-    <Base>
-      { children }
-    </Base>
-  );
+  return <Base>{children}</Base>;
 };
 
-export {Layout, IndexLayout};
+export { Layout, IndexLayout };
