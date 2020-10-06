@@ -21,7 +21,10 @@ const CodeSnippet = () => {
   return (
     <div className={indexStyle.codeSnippet}>
       <pre>
-        <code dangerouslySetInnerHTML={{ __html: html }}></code>
+        <code
+          className={indexStyle.code}
+          dangerouslySetInnerHTML={{ __html: html }}
+        ></code>
       </pre>
     </div>
   );
