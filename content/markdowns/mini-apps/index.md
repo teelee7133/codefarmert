@@ -5,7 +5,7 @@ description:  Mini Web App for Singing / Music
 type: page
 ---
 
-To all amerture singers out there, here are two helper app I have created:
+To all amateur singers out there, here are two helper apps I have created:
 
 
 * [![Tuner](music-note.svg)](/tuner/) [Tuner](/tuner/): This app tells you what notes you are singing / playing.  This will be useful to checking out for any out of tune singing.  Or it can be used for tuning any music instruments.  Music instruments are wonderful tools to hide any singing imprefection.
