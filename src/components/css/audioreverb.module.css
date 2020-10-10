@@ -24,6 +24,10 @@
 .empty-list-message{
     padding: 1em;
 }
+.error-messages{
+    color: red;
+    list-style-type: none;
+}
 
 .audio-item-container{
     margin-top: 1em;

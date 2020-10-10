@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RecoilRoot, atom, useSetRecoilState, useRecoilValue } from 'recoil';
+import {
+  RecoilRoot,
+  atom,
+  useRecoilState,
+  useSetRecoilState,
+  useRecoilValue,
+} from 'recoil';
 import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { recordAudio } from '../utils/audiorecorder';
@@ -11,8 +17,14 @@ const audioURLsState = atom({
   default: [],
 });
 
+const errorMessagesState = atom({
+  key: 'errorMessages',
+  default: [],
+});
+
 const AudioItem = ({ url }) => {
   const setAudioURLs = useSetRecoilState(audioURLsState);
+  const setErrorMessages = useSetRecoilState(errorMessagesState);
   const reverbAudioGraph = useRef(null);
   const audioRef = useRef(null);
   const [gain, setGain] = useState(0.4);
@@ -35,6 +47,10 @@ const AudioItem = ({ url }) => {
           await reverbAudioGraph.current.init();
         } catch {
           reverbAudioGraph.current = null;
+          setErrorMessages(errorMessages => [
+            ...errorMessages,
+            'Problem encountered while generating audio.',
+          ]);
         }
       })();
   }, [audioRef]);
@@ -100,6 +116,7 @@ const AudioItemList = () => {
 const RecordAudio = () => {
   const [isRecording, setIsRecording] = useState(false);
   const setaudioURLs = useSetRecoilState(audioURLsState);
+  const [errorMessages, setErrorMessages] = useRecoilState(errorMessagesState);
 
   const recorderStopperContainer = useRef({ stop: null });
 
@@ -110,8 +127,12 @@ const RecordAudio = () => {
     });
   };
 
-  const onerror = () => {
+  const onerror = e => {
     reset();
+    setErrorMessages(errorMessages => [
+      ...errorMessages,
+      'Problem encountered while recording.',
+    ]);
   };
 
   const onstop = url => {
@@ -124,6 +145,7 @@ const RecordAudio = () => {
   };
 
   const record = async () => {
+    setErrorMessages('');
     try {
       recorderStopperContainer.current.stop = await recordAudio(
         onstop,
@@ -131,6 +153,10 @@ const RecordAudio = () => {
       );
     } catch (e) {
       reset();
+      setErrorMessages(errorMessages => [
+        ...errorMessages,
+        'Problem encountered while recording.',
+      ]);
     }
   };
 
@@ -148,13 +174,20 @@ const RecordAudio = () => {
   }, [isRecording]);
 
   return (
-    <button
-      className={reverbStyles.recordButton}
-      onClick={() => setIsRecording(isRecording => !isRecording)}
-    >
-      {' '}
-      {isRecording ? 'Stop' : 'Record'}{' '}
-    </button>
+    <>
+      <button
+        className={reverbStyles.recordButton}
+        onClick={() => setIsRecording(isRecording => !isRecording)}
+      >
+        {' '}
+        {isRecording ? 'Stop' : 'Record'}{' '}
+      </button>
+      <ul className={reverbStyles.errorMessages}>
+        {errorMessages.map((message, i) => (
+          <li key={i}>{message}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
