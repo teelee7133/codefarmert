@@ -145,7 +145,7 @@ const RecordAudio = () => {
   };
 
   const record = async () => {
-    setErrorMessages('');
+    setErrorMessages([]);
     try {
       recorderStopperContainer.current.stop = await recordAudio(
         onstop,
