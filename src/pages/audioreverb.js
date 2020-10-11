@@ -176,11 +176,22 @@ const RecordAudio = () => {
   return (
     <>
       <button
-        className={reverbStyles.recordButton}
+        className={
+          isRecording
+            ? reverbStyles.recordButtonActive
+            : reverbStyles.recordButton
+        }
         onClick={() => setIsRecording(isRecording => !isRecording)}
       >
-        {' '}
-        {isRecording ? 'Stop' : 'Record'}{' '}
+        <img
+          className={
+            isRecording
+              ? reverbStyles.recordButtonLogoActive
+              : reverbStyles.recordButtonLogo
+          }
+          src="/images/circle-filled.svg"
+        />
+        {isRecording ? 'Stop' : 'Record'}
       </button>
       <ul className={reverbStyles.errorMessages}>
         {errorMessages.map((message, i) => (

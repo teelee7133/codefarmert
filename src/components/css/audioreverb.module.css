@@ -13,6 +13,50 @@
     display: block;
 }
 
+.record-button-active {
+    composes: record-button;
+    animation: blinking-button 1s infinite;
+}
+
+.record-button-logo {
+    margin-bottom: 0px;
+    margin-right: 1em;
+    vertical-align: middle;
+}
+
+.record-button-logo-active {
+    composes: record-button-logo;
+    animation: blinking 1s infinite;
+}
+
+
+/* Specifies the animation and transparency for the blinking text */
+@keyframes blinking-button {
+
+    0% {
+        color: white;
+    }
+    50% {
+        color: grey;
+    }
+    100% {
+        color: white;
+    }
+}
+
+@keyframes blinking {
+
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .container {
     margin-top: 2em;
     max-width: 20em;
