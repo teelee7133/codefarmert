@@ -1,5 +1,5 @@
 .container {
-    background-color: white;
+    background-color: rgb(240, 232, 224);
     font-family: share-tech-mono, mono;
     min-height: 100vh;
     position: relative;
@@ -7,12 +7,12 @@
 }
 
 .header-container {
-    background-color: rgb(166, 169, 211);
+    background-color: rgb(192, 160, 128);
     padding: 10px 20px;
 }
 
 .footer {
-    background-color: black;
+    background-color: rgb(96, 80, 64);
     color: white;
     text-align: center;
     padding: 10px;

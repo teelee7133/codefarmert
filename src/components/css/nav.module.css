@@ -13,10 +13,12 @@
     margin-bottom: 5px;
 }
 
-
-.container li a {
+.container li div {
     display: block;
     padding: 10px 20px;
+}
+
+.container li a {
     text-decoration: none;
     color: white;
 }
@@ -107,7 +109,7 @@
     .container li {
         display: inline-block;
     }
-    .container li a {
+    .container li div {
         padding: 10px 30px;
     }
     .container .menu {

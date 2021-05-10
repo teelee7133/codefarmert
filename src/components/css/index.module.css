@@ -15,7 +15,7 @@
     margin-left: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    background: rgba(191, 191, 255, 0.3);
+    background: rgba(240, 232, 224, 0.4);
 }
 
 .code {
@@ -41,13 +41,13 @@
 }
 
 .link-block {
-    background-color: rgb(73, 78, 143);
+    border: 1px solid currentColor;
     padding: 35px;
     display: inline-block;
     text-align: center;
     max-width: 70vh;
     width: 100%;
-    color: white;
+    color: currentColor;
     text-decoration: none;
     font-weight: bolder;
     font-size: 12;

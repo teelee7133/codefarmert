@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
+import blogListStyle from '../components/css/bloglist.module.css';
 
 const BlogIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -15,22 +16,14 @@ const BlogIndex = ({ data }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
-          <article key={node.fields.slug}>
+          <article className={blogListStyle.listEntry} key={node.fields.slug}>
             <header>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link
-                  style={{
-                    boxShadow: `none`,
-                    textDecoration: 'none',
-                  }}
-                  to={node.fields.slug}
-                >
-                  {title}
-                </Link>
+                <Link to={node.fields.slug}>{title}</Link>
               </h3>
               <small>{node.frontmatter.date}</small>
             </header>

@@ -17,7 +17,7 @@ const Nav = ({ data }) => {
       <ul className={navStyles.menu}>
         {data.site.siteMetadata.menuLinks.map(link => (
           <li key={link.link}>
-            <Link to={link.link}>{link.name}</Link>
+            <div><Link to={link.link}>{link.name}</Link></div>
           </li>
         ))}
       </ul>

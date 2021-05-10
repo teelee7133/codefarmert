@@ -1,20 +1,25 @@
-.container h1{
+.container h1 {
     margin-bottom: 0;
 }
 
-.container h1 p{
+.container h1 p {
     display: block;
 }
 
-.container math{
-    color: darkcyan;
+.container math {
+    color: rgb(144, 120, 96);
 }
 
-.container :global(.katex){
-    color: darkcyan;
+.container a {
+    color: currentColor;
+    text-decoration: underline dotted 1px;
 }
 
-.container :global(.miniapp-img){
+.container :global(.katex) {
+    color: rgb(144, 120, 96);
+}
+
+.container :global(.miniapp-img) {
     width: 2em;
     float: left;
     margin-top: 0.3em;
@@ -29,4 +34,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.nav-list a {
+    color: currentColor;
 }

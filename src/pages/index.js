@@ -5,7 +5,7 @@ import Prism from 'prismjs';
 import { IndexLayout } from '../components/layout';
 import SEO from '../components/seo';
 import indexStyle from '../components/css/index.module.css';
-import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/themes/prism-twilight.css';
 
 const CodeSnippet = () => {
   const code = `
