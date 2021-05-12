@@ -12,20 +12,14 @@
 
 .container a {
     color: currentColor;
-    text-decoration: underline dotted 1px;
+    text-decoration: underline dotted 2px;
 }
 
 .container :global(.katex) {
     color: rgb(144, 120, 96);
 }
 
-.container :global(.miniapp-img) {
-    width: 2em;
-    float: left;
-    margin-top: 0.3em;
-    margin-right: 0.75em;
-    margin-bottom: 0.5em;
-}
+
 
 .nav-list {
     display: flex;

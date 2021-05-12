@@ -7,7 +7,7 @@
 }
 
 .activate-button {
-    background-color: darkcyan;
+    background-color: rgb(192, 160, 128);
     color: white;
     border-radius: 3em;
     padding: 0.5em;
@@ -24,10 +24,10 @@
 
 .display-area {
     padding: 1em;
-    border-color: darkcyan;
+    border-color: rgb(192, 160, 128);
     border-width: 1px;
     border-style: solid;
-    color: darkcyan;
+    color: rgb(192, 160, 128);
     height: 15em;
     overflow-y: hidden;
     width: 15em;

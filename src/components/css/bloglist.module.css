@@ -12,7 +12,7 @@
 
 .list-entry a {
     box-shadow: none;
-    text-decoration: underline dotted currentColor 1px;
+    text-decoration: underline dotted currentColor 2px;
     color: currentColor;
 }
 
