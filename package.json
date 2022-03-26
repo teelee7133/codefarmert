@@ -37,7 +37,8 @@
     "recoil": "^0.0.10",
     "typeface-share-tech-mono": "^0.0.72",
     "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "typography-theme-wordpress-2016": "^0.16.19",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "babel-jest": "^26.0.1",
@@ -62,6 +63,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest"
-  }
+    "test": "jest",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
